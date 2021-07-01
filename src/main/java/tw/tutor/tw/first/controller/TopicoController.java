@@ -21,6 +21,7 @@ public class TopicoController {
 	@RequestMapping("/topicos")
 	@ResponseBody
 	public List<TopicoDto> lista(String nomeCurso) {
+		System.out.println(nomeCurso);
 		if (nomeCurso == null) {
 			List<Topico> topicos = topicoRepository.findAll();
 			return TopicoDto.converter(topicos);
