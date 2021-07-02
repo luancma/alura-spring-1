@@ -48,8 +48,12 @@ public class TopicoController {
     }
 
     @GetMapping("/{id}")
-    public DetalhesTopicosDto detalhar(@PathVariable Long id){
+    public DetalhesTopicosDto detalhar(@PathVariable Long id) {
         Topico topico = topicoRepository.getById(id);
         return new DetalhesTopicosDto(topico);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TopicoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoTopicoForm form) {
     }
 }
