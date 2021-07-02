@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.util.UriComponentsBuilder;
+import tw.tutor.tw.first.controller.dto.DetalhesTopicosDto;
 import tw.tutor.tw.first.controller.dto.TopicoDto;
 import tw.tutor.tw.first.controller.form.TopicoForm;
 import tw.tutor.tw.first.model.Topico;
@@ -44,5 +45,11 @@ public class TopicoController {
 
         URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
         return ResponseEntity.created(uri).body(new TopicoDto(topico));
+    }
+
+    @GetMapping("/{id}")
+    public DetalhesTopicosDto detalhar(@PathVariable Long id){
+        Topico topico = topicoRepository.getById(id);
+        return new DetalhesTopicosDto(topico);
     }
 }
